@@ -5,7 +5,7 @@ precedencegroup EffectfulComposition {
 
 infix operator >=>: EffectfulComposition
 
-func compose <A,B,C>(
+public func compose <A,B,C>(
     _ f: @escaping (A) -> (B, [String]),
     _ g: @escaping (B) -> (C, [String])
 ) -> (A) -> (C, [String]) {
@@ -17,7 +17,7 @@ func compose <A,B,C>(
     }
 }
 
-func compose <A,B,C>(
+public func compose <A,B,C>(
     _ f: @escaping (A) -> B?,
     _ g: @escaping (B) -> C?
 ) -> (A) -> (C?) {
@@ -27,7 +27,7 @@ func compose <A,B,C>(
     }
 }
 
-func compose <A,B,C>(
+public func compose <A,B,C>(
     _ f: @escaping (A) -> [B],
     _ g: @escaping (B) -> [C]
 ) -> (A) -> ([C]) {
