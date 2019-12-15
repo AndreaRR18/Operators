@@ -4,8 +4,11 @@ precedencegroup ForwardApplication {
 
 infix operator |>: ForwardApplication
 
-public func |> <A,B>(a: A, f: (A) -> B) -> B {
-    return f(a)
+public func |> <A,B>(
+    a: A,
+    f: (A) -> B
+) -> B {
+     f(a)
 }
 
 public func |> <A>(
