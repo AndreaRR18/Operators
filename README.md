@@ -17,3 +17,4 @@ Indices:
 `><` Apply operator: Get a Root model and a function that update its value and return a function from Root to Root
 
 `^` Getter: Functional getter that get a Value from a Root
+
