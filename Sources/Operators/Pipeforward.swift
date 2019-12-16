@@ -17,3 +17,10 @@ public func |> <A>(
 ) -> Void {
     f(&a)
 }
+
+func with<A, B>(
+    _ a: A,
+    _ f: (A) -> B
+) -> B {
+  f(a)
+}

@@ -12,7 +12,7 @@ public func <> <A>(
     return f >>> g
 }
 
-public func <> <A>(
+public func <> <A: AnyObject>(
     f: @escaping (inout A) -> Void,
     g: @escaping (inout A) -> Void
 ) -> (inout A) -> Void {
@@ -21,3 +21,37 @@ public func <> <A>(
         g(&a)
     }
 }
+
+func concat<A: AnyObject>(
+  _ f: @escaping (A) -> Void,
+  _ g: @escaping (A) -> Void
+  )
+  -> (A) -> Void {
+
+    return { a in
+      f(a)
+      g(a)
+    }
+}
+
+func concat<A: AnyObject>(
+  _ f1: @escaping (A) -> Void,
+  _ f2: @escaping (A) -> Void,
+  _ fs: ((A) -> Void)...
+  )
+  -> (A) -> Void {
+    
+    return { a in
+      f1(a)
+      f2(a)
+      fs.forEach { f in f(a) }
+    }
+}
+
+func concat<A>(
+  _ fs: ((A) -> A)...
+) -> (A) -> A {
+    return fs.reduce(identity, >>>)
+}
+
+fileprivate func identity<A>(_ a: A) -> A { return a }
