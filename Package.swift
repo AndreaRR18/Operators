@@ -24,6 +24,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "OperatorsTests",
-            dependencies: ["Operators"]),
+            dependencies: ["Operators","SwiftCheck"]),
     ]
 )
