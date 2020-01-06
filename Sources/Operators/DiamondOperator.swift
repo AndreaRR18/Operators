@@ -22,7 +22,7 @@ public func <> <A: AnyObject>(
     }
 }
 
-func concat<A: AnyObject>(
+public func concat<A: AnyObject>(
   _ f: @escaping (A) -> Void,
   _ g: @escaping (A) -> Void
   )
@@ -34,7 +34,7 @@ func concat<A: AnyObject>(
     }
 }
 
-func concat<A: AnyObject>(
+public func concat<A: AnyObject>(
   _ f1: @escaping (A) -> Void,
   _ f2: @escaping (A) -> Void,
   _ fs: ((A) -> Void)...
@@ -48,7 +48,7 @@ func concat<A: AnyObject>(
     }
 }
 
-func concat<A>(
+public func concat<A>(
   _ fs: ((A) -> A)...
 ) -> (A) -> A {
     return fs.reduce(identity, >>>)

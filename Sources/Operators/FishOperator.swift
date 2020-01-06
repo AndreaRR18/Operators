@@ -30,7 +30,7 @@ public func chain <A,B,C>(
     }
 }
 
-func chain<A, B, C, D>(
+public func chain<A, B, C, D>(
   _ f: @escaping (A) -> (B, [String]),
   _ g: @escaping (B) -> (C, [String]),
   _ h: @escaping (C) -> (D, [String])
@@ -60,7 +60,7 @@ public func chain <A,B,C>(
     }
 }
 
-func chain<A, B, C, D>(
+public func chain<A, B, C, D>(
   _ f: @escaping (A) -> (B?),
   _ g: @escaping (B) -> (C?),
   _ h: @escaping (C) -> (D?)

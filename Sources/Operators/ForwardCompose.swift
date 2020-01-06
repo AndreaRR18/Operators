@@ -11,14 +11,14 @@ public func >>> <A,B,C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> 
     }
 }
 
-func pipe<A, B, C>(
+public func pipe<A, B, C>(
     _ f: @escaping (A) -> B,
     _ g: @escaping (B) -> C
 ) -> (A) -> C {
    { g(f($0)) }
 }
 
-func pipe<A, B, C, D>(
+public func pipe<A, B, C, D>(
     _ f: @escaping (A) -> B,
     _ g: @escaping (B) -> C,
     _ h: @escaping (C) -> D

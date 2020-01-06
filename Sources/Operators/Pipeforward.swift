@@ -18,7 +18,7 @@ public func |> <A>(
     f(&a)
 }
 
-func with<A, B>(
+public func with<A, B>(
     _ a: A,
     _ f: (A) -> B
 ) -> B {
