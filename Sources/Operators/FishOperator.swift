@@ -87,3 +87,41 @@ public func chain <A,B,C>(
         return f(a).flatMap(g)
     }
 }
+
+//MARK: Result
+public func >=> <A,B,C>(
+    _ f: @escaping (A) -> Result<B, Error>,
+    _ g: @escaping (B) -> Result<C, Error>
+) -> (A) -> (Result<C, Error>) {
+    return { a in
+        switch f(a) {
+        case .success(let b):
+            return g(b)
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+}
+
+public func chain <A,B,C>(
+    _ f: @escaping (A) -> Result<B, Error>,
+    _ g: @escaping (B) -> Result<C, Error>
+) -> (A) -> (Result<C, Error>) {
+    return { a in
+       switch f(a) {
+        case .success(let b):
+            return g(b)
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+}
+
+public func chain<A, B, C, D>(
+  _ f: @escaping (A) -> (Result<B, Error>),
+  _ g: @escaping (B) -> (Result<C, Error>),
+  _ h: @escaping (C) -> (Result<D, Error>)
+  ) -> ((A) -> (Result<D, Error>)) {
+
+  return chain(f, chain(g, h))
+}
