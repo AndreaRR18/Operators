@@ -24,3 +24,10 @@ public func with<A, B>(
 ) -> B {
   f(a)
 }
+
+public func withInout <A>(
+    _ a: inout A,
+    _ f: (inout A) -> Void
+) -> Void {
+    f(&a)
+}
